@@ -1,5 +1,5 @@
 # Double-Trouble
-make robot / user unable to pick if 0, or would go over 0 (no negatives)
+- case of improper input, reprompt for entry
 
 
 Write a Java program (or C/C++) to play “Double Trouble”. Your program

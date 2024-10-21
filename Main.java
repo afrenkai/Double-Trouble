@@ -16,50 +16,63 @@ class Game {
     }
     public void P1() {
         Scanner remove = new Scanner(System.in);
-        System.out.println("Pick a Color and number of thingies to remove, separated by comma");
-        String[] GameOptions = remove.nextLine().split(",");
-        if (GameOptions.length != 2) {
-            System.out.println("Wrong Format. Maybe you put a space between the comma and the number?");
-            return;
-        }
-        String color = GameOptions[0].trim().toLowerCase();
-        int num_to_go;
-        try {
-            num_to_go = Integer.parseInt(GameOptions[1].trim());
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid Number of thingies, go again");
-            return;
-        }
+        boolean validInput = false;
 
-        if (num_to_go < 1) {
-            System.out.println("You need to get rid of minimum 1 thingy");
-            return;
-        }
-        switch (color) {
-            case "red":
-                if (num_to_go <= red) {
-                    red -= num_to_go;
-                } else {
-                    System.out.println("not enough red thingies");
-                }
-                break;
-            case "green":
-                if (num_to_go <= green) {
-                    green -= num_to_go;
-                } else {
-                    System.out.println("not enough green thingies");
-                }
-                break;
-            case "yellow":
-                if (num_to_go <= yellow) {
-                    yellow -= num_to_go;
-                } else
-                    System.out.println("not enough yellow thingies");
-               break;
-            default:
-                System.out.println("invalid color");
+        while (!validInput) {
+            System.out.println("Pick a color and number of thingies to remove, separated by a comma (e.g., red, 2):");
+            String[] GameOptions = remove.nextLine().split(",");
+
+            if (GameOptions.length != 2) {
+                System.out.println("Wrong format. Maybe you put a space between the comma and the number? Please try again.");
+                continue;
+            }
+
+            String color = GameOptions[0].trim().toLowerCase();
+            int num_to_go;
+
+            try {
+                num_to_go = Integer.parseInt(GameOptions[1].trim());
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid number of thingies, please enter a valid number.");
+                continue;
+            }
+
+            if (num_to_go < 1) {
+                System.out.println("You need to remove at least 1 thingy.");
+                continue;
+            }
+
+            switch (color) {
+                case "red":
+                    if (num_to_go <= red) {
+                        red -= num_to_go;
+                        validInput = true;
+                    } else {
+                        System.out.println("Not enough red thingies. Try again.");
+                    }
+                    break;
+                case "green":
+                    if (num_to_go <= green) {
+                        green -= num_to_go;
+                        validInput = true;
+                    } else {
+                        System.out.println("Not enough green thingies. Try again.");
+                    }
+                    break;
+                case "yellow":
+                    if (num_to_go <= yellow) {
+                        yellow -= num_to_go;
+                        validInput = true;
+                    } else {
+                        System.out.println("Not enough yellow thingies. Try again.");
+                    }
+                    break;
+                default:
+                    System.out.println("Invalid color. Choose red, green, or yellow.");
+            }
         }
     }
+
     public boolean CanWin(){
         int NonZeroCol = 0;
         if (red > 0) NonZeroCol++;
@@ -144,7 +157,7 @@ public class Main {
             if (Turn){
                 game.P1();
                 if (game.GameOver()){
-                    game.Winner("Player ");
+                    game.Winner("The Player ");
                     break;
                 }
             } else {
