@@ -1,5 +1,5 @@
 # Double-Trouble
-- robot going twice due to bool for turn order. need to fix
+- case of improper input, reprompt for entry
 
 
 Write a Java program (or C/C++) to play “Double Trouble”. Your program
