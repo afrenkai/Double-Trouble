@@ -1,5 +1,5 @@
 # Double-Trouble
-make robot / user unable to pick if 0, or would go over 0 (no negatives)
+- robot going twice due to bool for turn order. need to fix
 
 
 Write a Java program (or C/C++) to play “Double Trouble”. Your program
