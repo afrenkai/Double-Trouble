@@ -1,10 +1,11 @@
-import java.util.Random;
-import java.util.Scanner;
 //Artem Frenk
 //CS2223 HW1
 //Double Trouble
+import java.util.Random;
+import java.util.Scanner;
+
+
 class Game {
-    int order;
     int green = 3;
     int yellow = 7;
     int red = 5;
@@ -84,7 +85,7 @@ class Game {
             }
             return;
         }
-        //prio
+        //priority
         int MinThingies = Integer.MAX_VALUE;
         String TargetColor = "";
 
@@ -137,21 +138,19 @@ public class Main {
         int order = scanner.nextInt();
         boolean Turn = (order == 1);
 
-
         while (!game.GameOver()) {
             game.ShowThingies();
 
             if (Turn){
                 game.P1();
                 if (game.GameOver()){
-                    game.Winner("Player");
+                    game.Winner("Player ");
                     break;
                 }
-                game.sillyRobot();
             } else {
                 game.sillyRobot();
                 if (game.GameOver()){
-                    game.Winner("Robot");
+                    game.Winner("Robot ");
                     break;
                 }
             }
